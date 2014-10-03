@@ -70,7 +70,7 @@ public class FletcherGui extends JFrame {
 
         selectMode = new JComboBox();
         selectMode.setAlignmentX(Component.LEFT_ALIGNMENT);
-        selectMode.setModel(new DefaultComboBoxModel(new String[]{"Headless Arrows"}));
+        selectMode.setModel(new DefaultComboBoxModel(new String[]{"Cutting"}));
         mainPanel.add(selectMode);
         mainPanel.add(Box.createVerticalStrut(15));
 

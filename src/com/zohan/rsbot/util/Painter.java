@@ -20,11 +20,13 @@ public abstract class Painter<C extends ZohanContext> extends ClientAccessor<C> 
 
     private final String scriptName;
     private final double version;
+    private final Image mousePaint;
 
     public Painter(C c, String scriptName, double version) {
         super(c);
         this.scriptName = scriptName;
         this.version = version;
+        mousePaint = ctx.controller.script().downloadImage("http://i.imgur.com/kp8etqN.png");
     }
 
     @Override
@@ -49,6 +51,8 @@ public abstract class Painter<C extends ZohanContext> extends ClientAccessor<C> 
         for (int i = 0; i < arr.length; i++) {
             g.drawString(arr[i], 25, 95 + i * 15);
         }
+
+        g.drawImage(mousePaint, ctx.input.getLocation().x - 8, ctx.input.getLocation().y - 22, null);
     }
 
     protected int pH(int val) {

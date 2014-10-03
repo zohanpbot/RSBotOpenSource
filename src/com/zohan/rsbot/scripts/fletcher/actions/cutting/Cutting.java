@@ -39,13 +39,13 @@ public class Cutting extends FletchPrioritySequence {
 
     @Override
     public String toString() {
-        return "Cutting => " + amount;
+        return "Cutting => " + amount + " " + item.getName();
     }
 
     @Override
     public void messaged(MessageEvent messageEvent) {
-        if (messageEvent.text().contains("You carefully cut the wood")) {
-            count += 15;
+        if (messageEvent.text().contains("You carefully cut")) {
+            count += 1;
         }
     }
 }

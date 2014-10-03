@@ -12,7 +12,7 @@ public class FletcherPaint extends Painter<FletchContext> {
     private String[] paintData;
 
     public FletcherPaint(FletchContext fletchContext) {
-        super(fletchContext, "ZohanFletcher", 0.1);
+        super(fletchContext, "ZohanFletcher", 0.2);
         paintData = new String[2];
     }
 
