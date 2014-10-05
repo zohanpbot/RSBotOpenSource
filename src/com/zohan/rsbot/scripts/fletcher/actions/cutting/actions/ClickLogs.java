@@ -1,7 +1,7 @@
 package com.zohan.rsbot.scripts.fletcher.actions.cutting.actions;
 
-import com.zohan.rsbot.scripts.fletcher.context.FletchContext;
 import com.zohan.rsbot.scripts.framework.actions.PriorityAction;
+import com.zohan.rsbot.scripts.framework.context.ZohanContext;
 import org.powerbot.script.Condition;
 import org.powerbot.script.rt6.Component;
 import org.powerbot.script.rt6.Item;
@@ -11,13 +11,13 @@ import java.util.concurrent.Callable;
 /**
  * @author: Zohan
  */
-public class ClickLogs extends PriorityAction<FletchContext> {
+public class ClickLogs extends PriorityAction<ZohanContext> {
 
     private final Component clickKnife;
     private final int logsId;
     private Item logs;
 
-    public ClickLogs(FletchContext arg0, final int logsId) {
+    public ClickLogs(ZohanContext arg0, final int logsId) {
         super(arg0);
         this.logsId = logsId;
         clickKnife = ctx.widgets.component(1179, 33).component(1);

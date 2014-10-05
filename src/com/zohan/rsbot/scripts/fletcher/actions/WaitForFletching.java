@@ -1,15 +1,15 @@
 package com.zohan.rsbot.scripts.fletcher.actions;
 
-import com.zohan.rsbot.scripts.fletcher.context.FletchContext;
 import com.zohan.rsbot.scripts.framework.actions.PriorityAction;
+import com.zohan.rsbot.scripts.framework.context.ZohanContext;
 import org.powerbot.script.Condition;
 
 /**
  * @author: Zohan
  */
-public class WaitForFletching extends PriorityAction<FletchContext> {
+public class WaitForFletching extends PriorityAction<ZohanContext> {
 
-    public WaitForFletching(FletchContext arg0) {
+    public WaitForFletching(ZohanContext arg0) {
         super(arg0);
     }
 

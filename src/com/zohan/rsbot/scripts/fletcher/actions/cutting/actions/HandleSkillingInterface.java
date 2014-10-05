@@ -1,17 +1,17 @@
 package com.zohan.rsbot.scripts.fletcher.actions.cutting.actions;
 
-import com.zohan.rsbot.scripts.fletcher.context.FletchContext;
 import com.zohan.rsbot.scripts.fletcher.data.CutItem;
 import com.zohan.rsbot.scripts.framework.actions.PriorityAction;
+import com.zohan.rsbot.scripts.framework.context.ZohanContext;
 
 /**
  * @author: Zohan
  */
-public class HandleSkillingInterface extends PriorityAction<FletchContext> {
+public class HandleSkillingInterface extends PriorityAction<ZohanContext> {
 
     private final CutItem item;
 
-    public HandleSkillingInterface(FletchContext arg0, CutItem cutItem) {
+    public HandleSkillingInterface(ZohanContext arg0, CutItem cutItem) {
         super(arg0);
         item = cutItem;
     }

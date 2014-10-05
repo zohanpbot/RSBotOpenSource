@@ -1,7 +1,6 @@
 package com.zohan.rsbot.scripts.fletcher;
 
-import com.zohan.rsbot.scripts.fletcher.actions.FletchPrioritySequence;
-import com.zohan.rsbot.scripts.fletcher.context.FletchContext;
+import com.zohan.rsbot.scripts.framework.context.ZohanContext;
 import com.zohan.rsbot.util.Painter;
 import org.powerbot.script.*;
 
@@ -12,19 +11,21 @@ import java.awt.*;
  * @Author: Zohan
  */
 
-@Script.Manifest(name = "ZohanFletcher", description = "Fletches Stoof")
-public class ZohanFletcher extends PollingScript<FletchContext> implements PaintListener, MessageListener {
+@Script.Manifest(name = "ZohanFletcher", description = "Currently supports cutting, features added upon request", properties = "topic=1177639; hidden=false; client=6")
+public class ZohanFletcher extends PollingScript<ZohanContext> implements PaintListener, MessageListener {
 
-    FletchPrioritySequence sequence;
-    Painter painter;
+    private Painter painter;
     private FletcherGui gui;
+    private FletcherQueueSequence queue;
+
 
     public void start() {
-        painter = new FletcherPaint(ctx);
+        queue = new FletcherQueueSequence(ctx);
+        painter = new FletcherPaint(ctx, queue);
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                gui = new FletcherGui(ctx);
+                gui = new FletcherGui(ctx, queue);
             }
         });
     }
@@ -32,7 +33,7 @@ public class ZohanFletcher extends PollingScript<FletchContext> implements Paint
     @Override
     public void poll() {
         if (gui != null && !gui.isVisible()) {
-            ctx.queue.run();
+            queue.run();
         }
     }
 
@@ -46,6 +47,6 @@ public class ZohanFletcher extends PollingScript<FletchContext> implements Paint
 
     @Override
     public void messaged(MessageEvent messageEvent) {
-        ctx.queue.messaged(messageEvent);
+        queue.messaged(messageEvent);
     }
 }

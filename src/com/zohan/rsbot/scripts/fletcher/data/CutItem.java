@@ -20,7 +20,6 @@ public enum CutItem {
     MAGIC_SHIELDBOW("Magic Shieldbow", 1513, "Magic", 1, 8);
 
 
-
     private final int logId, gridIndex, menuIndex;
     private final String name, category;
 

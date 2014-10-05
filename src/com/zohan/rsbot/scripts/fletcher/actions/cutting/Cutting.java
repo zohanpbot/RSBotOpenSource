@@ -6,8 +6,8 @@ import com.zohan.rsbot.scripts.fletcher.actions.cutting.actions.ClickLogs;
 import com.zohan.rsbot.scripts.fletcher.actions.cutting.actions.GetLogs;
 import com.zohan.rsbot.scripts.fletcher.actions.cutting.actions.HandleLogInterface;
 import com.zohan.rsbot.scripts.fletcher.actions.cutting.actions.HandleSkillingInterface;
-import com.zohan.rsbot.scripts.fletcher.context.FletchContext;
 import com.zohan.rsbot.scripts.fletcher.data.CutItem;
+import com.zohan.rsbot.scripts.framework.context.ZohanContext;
 import org.powerbot.script.MessageEvent;
 
 /**
@@ -20,7 +20,7 @@ public class Cutting extends FletchPrioritySequence {
 
     private int count = 0;
 
-    public Cutting(FletchContext arg0, CutItem item, int amount) {
+    public Cutting(ZohanContext arg0, CutItem item, int amount) {
         super(arg0);
         this.item = item;
         this.amount = amount;

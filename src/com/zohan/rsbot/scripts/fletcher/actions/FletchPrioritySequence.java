@@ -1,16 +1,16 @@
 package com.zohan.rsbot.scripts.fletcher.actions;
 
-import com.zohan.rsbot.scripts.fletcher.context.FletchContext;
 import com.zohan.rsbot.scripts.framework.actions.ActionPrioritySequence;
 import com.zohan.rsbot.scripts.framework.actions.PriorityAction;
+import com.zohan.rsbot.scripts.framework.context.ZohanContext;
 import org.powerbot.script.MessageListener;
 
 /**
  * @Author: Zohan
  */
-public abstract class FletchPrioritySequence extends ActionPrioritySequence<FletchContext, PriorityAction<FletchContext>> implements MessageListener {
+public abstract class FletchPrioritySequence extends ActionPrioritySequence<ZohanContext, PriorityAction<ZohanContext>> implements MessageListener {
 
-    public FletchPrioritySequence(FletchContext arg0) {
+    public FletchPrioritySequence(ZohanContext arg0) {
         super(arg0);
     }
 

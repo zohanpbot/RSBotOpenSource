@@ -2,8 +2,8 @@ package com.zohan.rsbot.scripts.fletcher;
 
 import com.zohan.rsbot.scripts.fletcher.actions.FletchPrioritySequence;
 import com.zohan.rsbot.scripts.fletcher.actions.cutting.Cutting;
-import com.zohan.rsbot.scripts.fletcher.context.FletchContext;
 import com.zohan.rsbot.scripts.fletcher.data.CutItem;
+import com.zohan.rsbot.scripts.framework.context.ZohanContext;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -14,14 +14,15 @@ import java.awt.event.ActionListener;
 
 public class FletcherGui extends JFrame {
 
-    private final FletchContext ctx;
+    private final ZohanContext ctx;
+    private final FletcherQueueSequence queue;
     private final Container contentPane;
 
     //    Bottom Components
     private JButton btnStart;
 
     //    Left Components
-    private JList<FletchPrioritySequence> list;
+    private JList list;
 
     //    Center Components
     private JPanel mainPanel;
@@ -30,8 +31,9 @@ public class FletcherGui extends JFrame {
     private JTextField txtAmount;
     private JButton btnAdd;
 
-    public FletcherGui(final FletchContext ctx) {
+    public FletcherGui(final ZohanContext ctx, FletcherQueueSequence queue) {
         this.ctx = ctx;
+        this.queue = queue;
         setTitle("ZohanFletcher GUI");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         contentPane = getContentPane();
@@ -53,8 +55,8 @@ public class FletcherGui extends JFrame {
         contentPane.add(btnStart, BorderLayout.PAGE_END);
 
 //        Left Components
-        list = new JList<FletchPrioritySequence>();
-        list.setBorder(new TitledBorder(BorderFactory.createDashedBorder(Color.GRAY), "Queue"));
+        list = new JList();
+        list.setBorder(new TitledBorder(BorderFactory.createLineBorder(Color.GRAY), "Queue"));
         list.setPreferredSize(new Dimension(150, 80));
 
         contentPane.add(list, BorderLayout.LINE_START);
@@ -103,8 +105,8 @@ public class FletcherGui extends JFrame {
     }
 
     private void refreshList() {
-        DefaultListModel<FletchPrioritySequence> dlm = new DefaultListModel<FletchPrioritySequence>();
-        for (FletchPrioritySequence item : ctx.queue.queue()) {
+        DefaultListModel dlm = new DefaultListModel();
+        for (FletchPrioritySequence item : queue.queue()) {
             dlm.addElement(item);
         }
         list.setModel(dlm);
@@ -122,7 +124,7 @@ public class FletcherGui extends JFrame {
             }
             switch (selectMode.getSelectedIndex()) {
                 case 0:
-                    ctx.queue.add(new Cutting(ctx, (CutItem) selectItem.getSelectedItem(), amount));
+                    queue.add(new Cutting(ctx, (CutItem) selectItem.getSelectedItem(), amount));
                     break;
             }
             refreshList();

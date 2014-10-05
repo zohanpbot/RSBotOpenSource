@@ -1,16 +1,16 @@
 package com.zohan.rsbot.scripts.fletcher.actions.cutting.actions;
 
-import com.zohan.rsbot.scripts.fletcher.context.FletchContext;
 import com.zohan.rsbot.scripts.framework.actions.PriorityAction;
+import com.zohan.rsbot.scripts.framework.context.ZohanContext;
 
 /**
  * @author: Zohan
  */
-public class GetLogs extends PriorityAction<FletchContext> {
+public class GetLogs extends PriorityAction<ZohanContext> {
 
     private final int logsId;
 
-    public GetLogs(FletchContext arg0, final int logsId) {
+    public GetLogs(ZohanContext arg0, final int logsId) {
         super(arg0);
         this.logsId = logsId;
     }
